@@ -1,0 +1,27 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>Welcome, {{ user.username }}!</h1>
+
+    <!-- Display user profile information -->
+{#    <div>#}
+{#      <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture">#}
+{#      <p>Bio: {{ user.userprofile.bio }}</p>#}
+{#      <!-- Add more profile information as needed -->#}
+{#    </div>#}
+
+    <!-- Quick links to features -->
+    <div>
+      <h2>Quick Links</h2>
+      <ul>
+        <li><a href="{% url 'create_event' %}">Create Event</a></li>
+        <li><a href="{% url 'organizer_dashboard' %}">Organizer Dashboard</a></li>
+        <!-- Add more quick links as needed -->
+      </ul>
+    </div>
+  </div>
+{% endblock %}

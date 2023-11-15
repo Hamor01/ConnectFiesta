@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Manage Event: {{ event.name }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2>Manage Event: {{ event.name }}</h2>
+
+    <div>
+      <p>Date: {{ event.date }}</p>
+      <p>Location: {{ event.location }}</p>
+      <!-- Add more event details as needed -->
+
+      <h3>Attendees</h3>
+      <ul>
+        {% for attendee in event.attendee_set.all %}
+          <li>{{ attendee.user.user.username }}</li>
+        {% endfor %}
+      </ul>
+
+      <!-- Add more event management options or details -->
+    </div>
+
+    <a href="{% url 'update_event' event_id=event.id %}">Edit Event</a>
+    <a href="{% url 'cancel_event' event_id=event.id %}">Cancel Event</a>
+  </div>
+{% endblock %}

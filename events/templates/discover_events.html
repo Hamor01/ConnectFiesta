@@ -1,0 +1,51 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Discover Events
+
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="container">
+
+    <h2>Upcoming Events</h2>
+
+  {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+    {% if events %}
+
+      <ul>
+
+        {% for event in events %}
+
+          <li>
+            <h3>{{ event.name }}</h3>
+            <p>Date: {{ event.date }}</p>
+            <p>Location: {{ event.location }}</p>
+            <!-- Add more event details as needed -->
+            <a href="{% url 'event_detail' event_id=event.id %}">Details</a>
+          </li>
+
+        {% endfor %}
+
+      </ul>
+    {% else %}
+
+      <p>No upcoming events.</p>
+
+    {% endif %}
+
+  </div>
+
+{% endblock %}

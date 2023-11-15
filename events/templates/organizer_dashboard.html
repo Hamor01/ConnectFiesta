@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Organizer Dashboard
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+
+    <h2>Organizer Dashboard</h2>
+
+    {% if created_events %}
+
+      <h3>Your Created Events</h3>
+
+      <ul>
+        {% for event in created_events %}
+          <li>
+            <h4>{{ event.name }}</h4>
+            <p>Date: {{ event.date }}</p>
+            <p>Location: {{ event.location }}</p>
+            <!-- Add more event details as needed -->
+            <a href="{% url 'manage_event' event_id=event.id %}">Manage Event</a>
+          </li>
+        {% endfor %}
+
+      </ul>
+
+    {% else %}
+
+      <p>You haven't created any events yet.</p>
+
+
+    {% endif %}
+
+    <!-- Add more sections or information as needed -->
+  </div>
+
+
+{% endblock %}
